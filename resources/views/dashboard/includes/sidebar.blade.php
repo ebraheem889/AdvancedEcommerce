@@ -7,55 +7,55 @@
             </li>
 
 
-            <li class="nav-item  open ">
-                <a href=""><i class="la la-home"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">لغات الموقع </span>
-                    <span
-                        class="badge badge badge-info badge-pill float-right mr-2">#</span>
-                </a>
-                <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="#"
-                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
-                    </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.dash.crypto">أضافة
-                            لغة جديده </a>
-                    </li>
-                </ul>
-            </li>
+{{--            <li class="nav-item  open ">--}}
+{{--                <a href=""><i class="la la-home"></i>--}}
+{{--                    <span class="menu-title" data-i18n="nav.dash.main">لغات الموقع </span>--}}
+{{--                    <span--}}
+{{--                        class="badge badge badge-info badge-pill float-right mr-2">#</span>--}}
+{{--                </a>--}}
+{{--                <ul class="menu-content">--}}
+{{--                    <li class="active"><a class="menu-item" href="#"--}}
+{{--                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>--}}
+{{--                    </li>--}}
+{{--                    <li><a class="menu-item" href="#" data-i18n="nav.dash.crypto">أضافة--}}
+{{--                            لغة جديده </a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
 
-            {{-- end of the main languages  --}}
+{{--            --}}{{-- end of the main languages  --}}
 
-            <li class="nav-item"><a href=""><i class="la la-group"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">الاقسام الرئيسيه </span>
-                    <span
-                        class="badge badge badge-danger badge-pill float-right mr-2">#</span>
-                </a>
-                <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="#"
-                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
-                    </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.dash.crypto">أضافة
-                            قسم جديد </a>
-                    </li>
-                </ul>
-            </li>
-            {{-- end of the main categories  --}}
+{{--            <li class="nav-item"><a href=""><i class="la la-group"></i>--}}
+{{--                    <span class="menu-title" data-i18n="nav.dash.main">الاقسام الرئيسيه </span>--}}
+{{--                    <span--}}
+{{--                        class="badge badge badge-danger badge-pill float-right mr-2">#</span>--}}
+{{--                </a>--}}
+{{--                <ul class="menu-content">--}}
+{{--                    <li class="active"><a class="menu-item" href="#"--}}
+{{--                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>--}}
+{{--                    </li>--}}
+{{--                    <li><a class="menu-item" href="#" data-i18n="nav.dash.crypto">أضافة--}}
+{{--                            قسم جديد </a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            --}}{{-- end of the main categories  --}}
 
-            <li class="nav-item"><a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">التجار  </span>
-                    <span
-                        class="badge badge badge-success badge-pill float-right mr-2">#</span>
-                </a>
-                <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="#"
-                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
-                    </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.dash.crypto">أضافة
-                            تاجر  </a>
-                    </li>
-                </ul>
-            </li>
-            {{--            end of vendors --}}
+{{--            <li class="nav-item"><a href=""><i class="la la-male"></i>--}}
+{{--                    <span class="menu-title" data-i18n="nav.dash.main">التجار  </span>--}}
+{{--                    <span--}}
+{{--                        class="badge badge badge-success badge-pill float-right mr-2">#</span>--}}
+{{--                </a>--}}
+{{--                <ul class="menu-content">--}}
+{{--                    <li class="active"><a class="menu-item" href="#"--}}
+{{--                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>--}}
+{{--                    </li>--}}
+{{--                    <li><a class="menu-item" href="#" data-i18n="nav.dash.crypto">أضافة--}}
+{{--                            تاجر  </a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--                        end of vendors--}}
 
 {{--            <li class="nav-item"><a href=""><i class="la la-male"></i>--}}
 {{--                    <span class="menu-title" data-i18n="nav.dash.main">الطلاب  </span>--}}
@@ -87,27 +87,25 @@
 {{--            </li>--}}
 
 
-{{--            <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"--}}
-{{--                                                                                    data-i18n="nav.templates.main">Templates</span></a>--}}
-{{--                <ul class="menu-content">--}}
-{{--                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">Vertical</a>--}}
-{{--                        <ul class="menu-content">--}}
-{{--                            <li><a class="menu-item" href="../vertical-menu-template"--}}
-{{--                                   data-i18n="nav.templates.vert.classic_menu">Classic Menu</a>--}}
-{{--                            </li>--}}
-{{--                            <li><a class="menu-item" href="../vertical-modern-menu-template">Modern Menu</a>--}}
-{{--                            </li>--}}
-{{--                            <li><a class="menu-item" href="../vertical-compact-menu-template"--}}
-{{--                                   data-i18n="nav.templates.vert.compact_menu">Compact Menu</a>--}}
-{{--                            </li>--}}
-{{--                            <li><a class="menu-item" href="../vertical-content-menu-template"--}}
-{{--                                   data-i18n="nav.templates.vert.content_menu">Content Menu</a>--}}
-{{--                            </li>--}}
-{{--                            <li><a class="menu-item" href="../vertical-overlay-menu-template"--}}
-{{--                                   data-i18n="nav.templates.vert.overlay_menu">Overlay Menu</a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
+            <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                                                                                    data-i18n="nav.templates.main">الاعدادات </span></a>
+                <ul class="menu-content">
+                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">طرق التوصيل</a>
+                        <ul class="menu-content">
+                            <li><a class="menu-item" href="../vertical-menu-template"
+                                   data-i18n="nav.templates.vert.classic_menu"></a>
+                            </li>
+                            <li><a class="menu-item" href="{{route('edit.shippings.methods', 'free')}}">توصيل مجاني</a>
+                            </li>
+                            <li><a class="menu-item" href="{{route('edit.shippings.methods', 'outer')}}"
+                                   data-i18n="nav.templates.vert.compact_menu">توصيل خارجي</a>
+                            </li>
+                            <li><a class="menu-item" href="{{route('edit.shippings.methods', 'inner')}}"
+                                   data-i18n="nav.templates.vert.content_menu">توصل داخلي</a>
+                            </li>
+
+                        </ul>
+                    </li>
 {{--                    <li><a class="menu-item" href="#" data-i18n="nav.templates.horz.main">Horizontal</a>--}}
 {{--                        <ul class="menu-content">--}}
 {{--                            <li><a class="menu-item" href="../horizontal-menu-template"--}}
@@ -118,8 +116,9 @@
 {{--                            </li>--}}
 {{--                        </ul>--}}
 {{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
+                </ul>
+            </li>
+                    {{--end of settings --}}
 {{--            <li class=" navigation-header">--}}
 {{--                <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"--}}
 {{--                                                                        data-toggle="tooltip"--}}

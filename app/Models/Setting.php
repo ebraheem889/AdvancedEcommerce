@@ -3,16 +3,18 @@
 namespace App\Models;
 
 use Astrotomic\Translatable\Translatable;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Setting extends Model
+class Setting extends Model implements TranslatableContract
 {
 
     use Translatable;
 
 
-//    protected $with = ['translations'];
-    protected $translatedAttributes = ['value'];
+    protected $with = ['translations'];
+    public $translatedAttributes  = ['value'];
     protected $fillable =['key','is_translatable','plain_value'];
 
     protected $casts =[
@@ -35,7 +37,7 @@ class Setting extends Model
 
         if ($key === 'translatable'){
 
-            return static::setTranslatableSetting($value);
+            return static::setTranslatableSettings($value);
 
         }
       else{
@@ -44,11 +46,13 @@ class Setting extends Model
 
     }
 
-    public static function setTranslatableSetting($settings = []){
+    public static function setTranslatableSettings($settings = []){
 
         foreach ($settings as $key => $value){
 
-            static::updateOrCreate(['key' => $key ], ['is_translatable' => true , 'plain_value' => $value]);
+            static::updateOrCreate(['key' => $key ],
+                                    ['is_translatable' => true
+                                        , 'value' => $value]);
         }
 
     }

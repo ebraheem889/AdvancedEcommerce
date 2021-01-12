@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('login',function (){
+
+    return 'user login';
 });
+
+
+//Route::get('', function () {
+//    return view('layouts.admin');
+//});

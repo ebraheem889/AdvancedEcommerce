@@ -2,7 +2,7 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-            <li class="nav-item active"><a href=""><i class="la la-mouse-pointer"></i><span
+            <li class="nav-item active"><a href="{{route('admin.Dashboard')}}"><i class="la la-mouse-pointer"></i><span
                         class="menu-title" data-i18n="nav.add_on_drag_drop.main">الرئيسية </span></a>
             </li>
 
@@ -88,20 +88,20 @@
 
 
             <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
-                                                                                    data-i18n="nav.templates.main">الاعدادات </span></a>
+                                                                                    data-i18n="nav.templates.main">@lang('admin.settings') </span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">طرق التوصيل</a>
+                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">@lang('admin.Shipping Methods')</a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="../vertical-menu-template"
                                    data-i18n="nav.templates.vert.classic_menu"></a>
                             </li>
-                            <li><a class="menu-item" href="{{route('edit.shippings.methods', 'free')}}">توصيل مجاني</a>
+                            <li><a class="menu-item" href="{{route('edit.shippings.methods', 'free')}}">@lang('admin.Free Shipping')</a>
                             </li>
                             <li><a class="menu-item" href="{{route('edit.shippings.methods', 'outer')}}"
-                                   data-i18n="nav.templates.vert.compact_menu">توصيل خارجي</a>
+                                   data-i18n="nav.templates.vert.compact_menu">@lang('admin.Outer Shipping')</a>
                             </li>
                             <li><a class="menu-item" href="{{route('edit.shippings.methods', 'inner')}}"
-                                   data-i18n="nav.templates.vert.content_menu">توصل داخلي</a>
+                                   data-i18n="nav.templates.vert.content_menu"> @lang('admin.Inner Shipping')</a>
                             </li>
 
                         </ul>

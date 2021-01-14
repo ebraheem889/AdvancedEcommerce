@@ -27,6 +27,7 @@ Route::group(['namespace'=>'Dashboard' ,'middleware' => 'auth:admins' ,'prefix' 
     Route::group(['prefix' =>'settings'],function (){
 
         Route::get('shipping-methods/{type}','SettingsController@editShippingMethods')->name('edit.shippings.methods');
+        Route::put('shipping-methods/{id}','SettingsController@UpdateShippingMethods')->name('update.shippings.methods');
     });
 
 });

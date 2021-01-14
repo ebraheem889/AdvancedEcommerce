@@ -27,6 +27,9 @@ class SettingDatabaseSeeder extends Seeder
                 'free_shipping_label' => 'Free shipping',
                 'local_label' => 'locale shipping',
                 'outer_label' => 'outer shipping',
+                'free_shipping_label' => 'توصيل مجاني',
+                'local_label' => 'توصيل داخلي',
+                'outer_label' => 'توصيل حارجي',
             ] ,
         ]);
     }

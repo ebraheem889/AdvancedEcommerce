@@ -17,28 +17,33 @@ use Illuminate\Support\Facades\Route;
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    ], function () {
 
-Route::group(['namespace'=>'Dashboard' ,'middleware' => 'auth:admins' ,'prefix' =>'admin'],function(){
+    Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth:admins', 'prefix' => 'admin'], function () {
 
-    Route::get('/','DashboardController@index')->name('admin.Dashboard');
-    Route::get('logout','LoginController@logout')->name('admin.logout');
+        Route::get('/', 'DashboardController@index')->name('admin.Dashboard');
+        Route::get('logout', 'LoginController@logout')->name('admin.logout');
 
-    Route::group(['prefix' =>'settings'],function (){
+        Route::group(['prefix' => 'settings'], function () {
 
-        Route::get('shipping-methods/{type}','SettingsController@editShippingMethods')->name('edit.shippings.methods');
-        Route::put('shipping-methods/{id}','SettingsController@UpdateShippingMethods')->name('update.shippings.methods');
+            Route::get('shipping-methods/{type}', 'SettingsController@editShippingMethods')->name('edit.shippings.methods');
+            Route::put('shipping-methods/{id}', 'SettingsController@UpdateShippingMethods')->name('update.shippings.methods');
+        }); // end of settings routes
+
+        Route::group(['prefix' => 'profile'], function () {
+
+            Route::get('profile', 'ProfileController@editprofile')->name('edit.profile');
+            Route::put('update/{id}', 'ProfileController@Updateprofile')->name('update.profile');
+        }); // end of profile routes
     });
 
-});
 
+    Route::group(['namespace' => 'dashboard', 'middleware' => 'guest:admins', 'prefix' => 'admin'], function () {
 
-Route::group(['namespace'=>'dashboard' ,'middleware'=>'guest:admins' ,'prefix' =>'admin'],function(){
+        Route::get('login', 'LoginController@login')->name('admin.login');
+        Route::post('post_login', 'LoginController@post_login')->name('post_login.login');
 
-    Route::get('login','LoginController@login')->name('admin.login');
-    Route::post('post_login','LoginController@post_login')->name('post_login.login');
-
-});
+    });
 
 });

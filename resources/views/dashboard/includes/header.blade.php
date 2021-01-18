@@ -30,21 +30,22 @@
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <span class="mr-1">مرجبا
+                <span class="mr-1">
                   <span
                       class="user-name text-bold-700"> {{auth('admins')->user()->name}}</span>
+
+
                 </span>
-                            <span class="avatar avatar-online">
-                  <img  style="height: 35px;" src="" alt="avatar"><i></i></span>
+{{--                            <span class="avatar avatar-online">--}}
+{{--                  <img  style="height: 35px;" src="" alt="avatar"><i></i></span>--}}
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href=""><i
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{route('edit.profile')}}"><i
                                     class="ft-user"></i> تعديل الملف الشحصي </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="ft-power"></i> تسجيل
                                 الخروج </a>
                         </div>
                     </li>
-
                     <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
                             <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow">5</span>
@@ -231,6 +232,37 @@
                                                                 href="javascript:void(0)">Read all messages</a></li>
                         </ul>
                     </li>
+
+                    {{--                    start the Language dropDown menu--}}
+
+                    <li class="dropdown dropdown-user nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                      <span class="mr-1">
+                       <span class="user-name text-bold-700"> Languages</span>
+                      </span>
+
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            @php
+                                $counter = 0;
+                            @endphp
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                            {{ $properties['native'] }}
+                                        </a>
+
+                                @if( $counter < count(LaravelLocalization::getSupportedLocales())- 1 )
+                                    <div class="dropdown-divider"></div>
+                                @endif
+                                @php
+                                    $counter ++;
+                                @endphp
+                              @endforeach
+
+                        </div>
+                    </li>
+                    {{--                    end the Language dropDown menu--}}
+
                 </ul>
             </div>
         </div>

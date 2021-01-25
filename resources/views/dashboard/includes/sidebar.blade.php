@@ -25,20 +25,35 @@
 
 {{--            --}}{{-- end of the main languages  --}}
 
-{{--            <li class="nav-item"><a href=""><i class="la la-group"></i>--}}
-{{--                    <span class="menu-title" data-i18n="nav.dash.main">الاقسام الرئيسيه </span>--}}
-{{--                    <span--}}
-{{--                        class="badge badge badge-danger badge-pill float-right mr-2">#</span>--}}
-{{--                </a>--}}
-{{--                <ul class="menu-content">--}}
-{{--                    <li class="active"><a class="menu-item" href="#"--}}
-{{--                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>--}}
-{{--                    </li>--}}
-{{--                    <li><a class="menu-item" href="#" data-i18n="nav.dash.crypto">أضافة--}}
-{{--                            قسم جديد </a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
+            <li class="nav-item"><a href="#"><i class="la la-group"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">الاقسام الرئيسيه </span>
+                    <span
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{count(\App\Models\Category::whereNull('parent_id')->get())}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.categories','maincategory')}}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.categories.create','maincategory')}}" data-i18n="nav.dash.crypto">أضافة
+                            قسم جديد </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="#"><i class="la la-group"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">الاقسام الفرعية </span>
+                    <span
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{ count(\App\Models\Category::whereNotNull('parent_id')->get())}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.categories','subcategory')}}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.categories.create','subcategory')}}" data-i18n="nav.dash.crypto">أضافة
+                            قسم فرعي جديد </a>
+                    </li>
+                </ul>
+            </li>
 {{--            --}}{{-- end of the main categories  --}}
 
 {{--            <li class="nav-item"><a href=""><i class="la la-male"></i>--}}

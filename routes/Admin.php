@@ -36,6 +36,20 @@ Route::group(
             Route::get('profile', 'ProfileController@editprofile')->name('edit.profile');
             Route::put('update/{id}', 'ProfileController@Updateprofile')->name('update.profile');
         }); // end of profile routes
+
+        //start categories
+        Route::group(['prefix' => 'categories'], function () {
+            Route::get('/{type}/', 'CategoryController@index')->name('admin.categories');
+            Route::get('/create/{type}', 'CategoryController@create')->name('admin.categories.create');
+            Route::post('/store/{type}', 'CategoryController@store')->name('admin.categories.store');
+
+            Route::get('/edit/{id}/{type}', 'CategoryController@edit')->name('admin.categories.edit');
+            Route::post('/update/{id}/{type}', 'CategoryController@update')->name('admin.categories.update');
+            Route::get('/delete/{id}/{type}', 'CategoryController@destroy')->name('admin.categories.destroy');
+            Route::get('/changeStatus/{id}/{type}', 'CategoryController@changeStatus')->name('admin.categories.changeStatus');
+
+        });
+        // end categories
     });
 
 

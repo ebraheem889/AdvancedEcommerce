@@ -11,7 +11,8 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.Dashboard')}}">الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.categories','maincategory')}}"> الاقسام
+                                <li class="breadcrumb-item"><a href="{{route('admin.categories','maincategory')}}">
+                                        الاقسام
                                         الرئيسية </a>
                                 </li>
                                 <li class="breadcrumb-item active"> اضافة قسم
@@ -45,10 +46,11 @@
                                 <div class="card-content collapse show">
                                     <div class="form-group">
                                         <div class="card-body">
-                                            <form class="form" action="{{route('admin.categories.store','subcategory')}}"
+                                            <form class="form"
+                                                  action="{{route('admin.categories.store','subcategory')}}"
                                                   method="POST"
                                                   enctype="multipart/form-data">
-                                                @csrf
+                                            @csrf
                                             <!-- to stop the validation on the photo -->
 
                                                 <div class="form-body">
@@ -57,14 +59,16 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <select class="form-control" name="parent_id">
-                                                                    <option class="form-control" value="">اختار قسم</option>
+                                                                    <option class="form-control" value="">اختار قسم
+                                                                    </option>
                                                                     @foreach($categories as $category)
                                                                         <option class="form-control" value="{{$category->id}}">{{$category->name}}</option>
                                                                     @endforeach
                                                                 </select>
-                                                                    @error("parent_id")
-                                                                    <span class="text-danger">{{$message}}</span>
-                                                                    @enderror
+                                                                @error("parent_id")
+                                                                <span class="text-danger">{{$message}}</span>
+                                                                @enderror
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>

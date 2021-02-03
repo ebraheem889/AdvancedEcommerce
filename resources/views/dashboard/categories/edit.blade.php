@@ -11,7 +11,8 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.Dashboard')}}">الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.categories','maincategories')}}"> الاقسام
+                                <li class="breadcrumb-item"><a href="{{route('admin.categories','maincategories')}}">
+                                        الاقسام
                                         الرئيسية </a>
                                 </li>
                                 <li class="breadcrumb-item active"> تعديل قسم {{$category->name}}
@@ -46,7 +47,7 @@
                                     <div class="form-group">
                                         <div class="card-body">
                                             <form class="form"
-                                                  action="{{route('admin.categories.update' ,[$category->id ,'maincategories'])}}"
+                                                  action="{{route('admin.categories.update' ,[$category->id ,'maincategory'])}}"
                                                   method="POST"
                                                   enctype="multipart/form-data">
                                                 @csrf

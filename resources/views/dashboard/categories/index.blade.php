@@ -65,11 +65,11 @@
                                                         <td>
                                                             <div class="btn-group " role="group"
                                                                  aria-label="Basic example">
-                                                                <a href="{{route('admin.categories.edit' ,[$Category->id ,'maincategories'])}}"
+                                                                <a href="{{route('admin.categories.edit' ,[$Category->id ,'maincategory'])}}"
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
-                                                                <a href="{{route('admin.categories.destroy',[$Category->id ,'maincategories'])}}"
+                                                                <a href="{{route('admin.categories.destroy',[$Category->id ,'maincategory'])}}"
                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف</a>
-                                                                <a href="{{route('admin.categories.changeStatus' ,[$Category->id ,'maincategories'])}}"
+                                                                <a href="{{route('admin.categories.changeStatus' ,[$Category->id ,'maincategory'])}}"
                                                                    class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1">
 
                                                                     @if($Category-> is_active == 'مفعل')

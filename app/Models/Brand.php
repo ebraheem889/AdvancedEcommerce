@@ -17,6 +17,11 @@ class Brand extends Model
     public $translatedAttributes = ['name'];
 
     protected $with = ['translations'];
+    public function getPhotoAttribute($val){
+
+        return ($val!== null) ? asset('assets/images/brands/' .$val):"";
+
+    }
     public function getIsActiveAttribute($value)
     {
         return $value === 1 ? 'مفعل' : 'غير مفعل';

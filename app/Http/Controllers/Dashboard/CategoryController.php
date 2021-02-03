@@ -63,7 +63,6 @@ class CategoryController extends Controller
                 return cathandle::edit($id, $type, $value);
             }
         }
-
     }
 
 
@@ -81,7 +80,7 @@ class CategoryController extends Controller
     public function changeStatus($id, $type)
     {
 
-        $category = Category::orderBy('id', "DESC")->find($id);
+        $category = Category::find($id);
         if (!$category)
             return redirect()->route('admin.categories', $type)->with(['error' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
 
@@ -108,22 +107,15 @@ class CategoryController extends Controller
 
     public function destroy($id, $type)
     {
-
-        try {
-
-            $category = Category::orderBy('id', 'DESC')->find($id);
-            if (!$category)
-                return redirect()->route('admin.categories', $type)->with(['success' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
+        $category = Category::find($id);
+        if (!$category)
+            return redirect()->route('admin.categories', $type)->with(['success' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
 
 
-            $category->delete();
+        $category->delete();
 
-            return redirect()->route('admin.categories', $type)->with('success', 'تم الحذف بنجاج');
-        } catch (\Exception $exception) {
+        return redirect()->route('admin.categories', $type)->with('success', 'تم الحذف بنجاج');
 
-
-            return redirect()->back()->with('error', 'حدث خطأ ما يرجي المحاولة مرة أخري');
-        }
 
     }
 }

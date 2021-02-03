@@ -29,13 +29,17 @@ Route::group(
 
             Route::get('shipping-methods/{type}', 'SettingsController@editShippingMethods')->name('edit.shippings.methods');
             Route::put('shipping-methods/{id}', 'SettingsController@UpdateShippingMethods')->name('update.shippings.methods');
-        }); // end of settings routes
+        });
+
+        // end of settings routes
 
         Route::group(['prefix' => 'profile'], function () {
 
             Route::get('profile', 'ProfileController@editprofile')->name('edit.profile');
             Route::put('update/{id}', 'ProfileController@Updateprofile')->name('update.profile');
-        }); // end of profile routes
+        });
+
+        // end of profile routes
 
         //start categories
         Route::group(['prefix' => 'categories'], function () {
@@ -60,7 +64,18 @@ Route::group(
             Route::post('/update/{id}', 'BrandController@update')->name('admin.brands.update');
             Route::get('/delete/{id}', 'BrandController@destroy')->name('admin.brands.destroy');
         });
-        //end of brands
+        //end of brands routes
+
+        Route::group(['prefix' => 'tags'], function () {
+            Route::get('/', 'TagsController@index')->name('admin.tags');
+            Route::get('/create/', 'TagsController@create')->name('admin.tags.create');
+            Route::post('/store/', 'TagsController@store')->name('admin.tags.store');
+
+            Route::get('/edit/{id}', 'TagsController@edit')->name('admin.tags.edit');
+            Route::post('/update/{id}', 'TagsController@update')->name('admin.tags.update');
+            Route::get('/delete/{id}', 'TagsController@destroy')->name('admin.tags.destroy');
+        });
+        //end of tags routes
     });
 
 

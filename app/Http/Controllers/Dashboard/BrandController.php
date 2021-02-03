@@ -7,6 +7,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class BrandController extends Controller
 {
@@ -25,40 +27,45 @@ class BrandController extends Controller
 
     public function update(Request $request, $id)
     {
-        try {
-
-            if ($request->has('is_active')) {
-
-                $request->request->add(['is_active' => 1]);
-            } else {
-                $request->request->add(['is_active' => 0]);
-            }
-            $Brand = Brand::find($id);
-            if (!$Brand)
-                return redirect()->route('admin.brands')->with(['success' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
-
-            $request->validate([
-                'name' => 'required|string',
-            ]);
-            $Brand->update([
-                'name' => $request->name,
-                'is_active' => $request->is_active,
-            ]);
-
-            $Brand->name = $request->name;
-            $Brand->save();
-            return redirect()->route('admin.brands')->with('success', 'تم التعدبل بنجاج');
-        } catch (\Exception $exception) {
 
 
-            return redirect()->back()->with('error', 'حدث خطأ ما يرجي المحاولة مرة أخري');
+        if ($request->has('is_active')) {
+
+            $request->request->add(['is_active' => 1]);
+        } else {
+            $request->request->add(['is_active' => 0]);
         }
+        $Brand = Brand::find($id);
+        if (!$Brand)
+            return redirect()->route('admin.brands')->with(['success' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
+
+        $request->validate([
+            'name' => 'required|string',
+            'photo' => 'required_without:id|mimes:jpg,png,jpeg',
+        ]);
+        DB::beginTransaction();
+        if ($request->has('photo')) {
+            $filename = uploadImage($request->photo);
+            Brand::where('id', $id)->update(
+                [
+                    'photo' => $filename
+                ]
+            );
+            // to be done  Storage::delete($Brand->file);
+        }
+        $Brand->update([$request->except('_token','id','photo')]);
+
+        //save translations
+        $Brand->name = $request->name;
+        $Brand->save();
+        DB::commit();
+
+        return redirect()->route('admin.brands')->with('success', 'تم التعدبل بنجاج');
 
 
     }
 
-
-    public function store(Request $request)
+    function store(Request $request)
     {
 
         if ($request->has('is_active')) {
@@ -72,15 +79,15 @@ class BrandController extends Controller
             'name' => 'required|string',
 
         ]);
-        $path="";
-        if ($request->has('photo')){
-            $path= uploadImage($request->photo);
+        $path = "";
+        if ($request->has('photo')) {
+            $path = uploadImage($request->photo);
 
         }
 
         $Brand = Brand::create([
             'is_active' => $request->is_active,
-            'photo'=>$path
+            'photo' => $path
         ]);
 
         $Brand->name = $request->name;
@@ -89,9 +96,10 @@ class BrandController extends Controller
         return redirect()->route('admin.brands')->with(['success' => 'تم أضافة الماركة بنجاح']);
     }
 
-    public function edit(Request $request, $id)
+    public
+    function edit(Request $request, $id)
     {
-        $Brand = Brand::orderBy('id', 'DESC')->find($id);
+        $Brand = Brand::find($id);
         if (!$Brand)
             return redirect()->route('admin.brands')->with(['error' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
 
@@ -99,16 +107,17 @@ class BrandController extends Controller
     }
 
 
-    public function destroy($id)
+    public
+    function destroy($id)
     {
 
         try {
 
-             $Brand = Brand::orderBy('id', 'DESC')->find($id);
+            $Brand = Brand::orderBy('id', 'DESC')->find($id);
             if (!$Brand)
                 return redirect()->route('admin.brands')->with(['error' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
 
-             $Brand->delete();
+            $Brand->delete();
 
 
             return redirect()->route('admin.brands')->with('success', 'تم الحذف بنجاج');

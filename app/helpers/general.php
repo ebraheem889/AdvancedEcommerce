@@ -17,6 +17,6 @@ function uploadImage( $image)
 
 //    $image->store('/', $folder);
 //    $filename = $image->hashname();
-    return $path.'\\'.$file_name;
+    return $file_name;
 
 }

@@ -11,55 +11,49 @@ use Illuminate\Support\Facades\DB;
 class maincategory implements categories
 {
 
-    public  function index($type)
+    public function index($type)
     {
-        $Categories = Category::orderBy('id','DESC')->where('parent_id', '=', null)->get();
+        $Categories = Category::where('parent_id', '=', null)->get();
         return view('dashboard.categories.index', compact('Categories'));
     }
 
-    public  function create($type)
+    public function create($type)
     {
         return view('dashboard.categories.create');
 
     }
 
-    public  function update($request, $id, $type)
+    public function update($request, $id, $type)
     {
-        try {
-
-            if ($request->has('is_active')) {
-
-                $request->request->add(['is_active' => 1]);
-            } else {
-                $request->request->add(['is_active' => 0]);
-            }
-            $category = Category::find($id);
-            if (!$category)
-                return redirect()->route('admin.categories', $type)->with(['success' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
-
-            $request->validate([
-                'slug' =>'required|string',
-                'name' =>'required|string',
-            ]);
-            $category->update([
-                'slug' => $request->slug,
-                'is_active' => $request->is_active,
-            ]);
-
-            $category->name = $request->name;
-            $category->save();
-            return redirect()->route('admin.categories', $type)->with('success', 'تم التعدبل بنجاج');
-        } catch (\Exception $exception) {
 
 
-            return redirect()->back()->with('error', 'حدث خطأ ما يرجي المحاولة مرة أخري');
+        if ($request->has('is_active')) {
+
+            $request->request->add(['is_active' => 1]);
+        } else {
+            $request->request->add(['is_active' => 0]);
         }
+        $category = Category::find($id);
+        if (!$category)
+            return redirect()->route('admin.categories', $type)->with(['success' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
 
+        $request->validate([
+            'slug' => 'required|string',
+            'name' => 'required|string',
+        ]);
+        $category->update([
+            'slug' => $request->slug,
+            'is_active' => $request->is_active,
+        ]);
+
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('admin.categories', $type)->with('success', 'تم التعدبل بنجاج');
 
     }
 
 
-    public  function store( $request , $type)
+    public function store($request, $type)
     {
 
         if ($request->has('is_active')) {
@@ -87,9 +81,9 @@ class maincategory implements categories
         return redirect()->route('admin.categories', $type)->with(['success' => 'تم أضافة القسم بنجاح']);
     }
 
-    public  function edit($id, $type)
+    public function edit($id, $type)
     {
-        $category = Category::orderBy('id', 'DESC')->find($id);
+        $category = Category::find($id);
         if (!$category)
             return redirect()->route('admin.categories', $type)->with(['error' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
 

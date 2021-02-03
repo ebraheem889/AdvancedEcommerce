@@ -61,7 +61,7 @@
                                                     <tr>
                                                         <td>{{$Brand->name}}</td>
                                                         <td>{{$Brand->is_active}}</td>
-                                                        <td><img src="{{$Brand->photo}}"></td>
+                                                        <td><img src="{{$Brand->photo}}" style="width: 100px ;height: 100px"></td>
                                                         <td>
                                                             <div class="btn-group " role="group"
                                                                  aria-label="Basic example">

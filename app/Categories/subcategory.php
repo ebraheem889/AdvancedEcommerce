@@ -28,37 +28,32 @@ class subcategory implements categories
 
     public function update($request, $id, $type)
     {
-        try {
 
-            if ($request->has('is_active')) {
+        if ($request->has('is_active')) {
 
-                $request->request->add(['is_active' => 1]);
-            } else {
-                $request->request->add(['is_active' => 0]);
-            }
-            $category = Category::find($id);
-            if (!$category)
-                return redirect()->route('admin.categories', $type)->with(['success' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
-
-            $request->validate([
-                'slug' => 'required|string',
-                'name' => 'required|string',
-                'parent_id' => 'required|exists:categories,id',
-            ]);
-            $category->update([
-                'slug' => $request->slug,
-                'is_active' => $request->is_active,
-                'parent_id' => $request->parent_id
-            ]);
-
-            $category->name = $request->name;
-            $category->save();
-            return redirect()->route('admin.categories', $type)->with('success', 'تم التعدبل بنجاج');
-        } catch (\Exception $exception) {
-
-
-            return redirect()->back()->with('error', 'حدث خطأ ما يرجي المحاولة مرة أخري');
+            $request->request->add(['is_active' => 1]);
+        } else {
+            $request->request->add(['is_active' => 0]);
         }
+        $category = Category::find($id);
+        if (!$category)
+            return redirect()->route('admin.categories', $type)->with(['success' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
+
+        $request->validate([
+            'slug' => 'required|string',
+            'name' => 'required|string',
+            'parent_id' => 'required|exists:categories,id',
+        ]);
+        $category->update([
+            'slug' => $request->slug,
+            'is_active' => $request->is_active,
+            'parent_id' => $request->parent_id
+        ]);
+
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('admin.categories', $type)->with('success', 'تم التعدبل بنجاج');
+
     }
 
 
@@ -74,7 +69,7 @@ class subcategory implements categories
 
         $request->validate([
             'name' => 'required|string',
-            'slug' => 'required|string',
+            'slug' => 'required|string|unique:categories,slug',
             'parent_id' => 'required|numeric'
         ]);
 
@@ -97,8 +92,8 @@ class subcategory implements categories
     public function edit($id, $type)
     {
 
-        $category = Category::orderBy('id', 'DESC')->find($id);
-        $categories = Category::orderBy('id', 'DESC')->whereNull('parent_id')->get();
+        $category = Category::find($id);
+        $categories = Category::all();
         if (!$category)
             return redirect()->route('admin.categories', $type)->with(['error' => 'حدث خطأ ما برجاء المحاولة مرة أخري']);
 

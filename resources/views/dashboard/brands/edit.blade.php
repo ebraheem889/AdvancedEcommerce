@@ -52,11 +52,15 @@
                                                 @csrf
                                                 <input name="id" value="{{$Brand->id}}" type="hidden">
                                                 <!-- to stop the validation on the photo -->
-
+                                                <div class="row">
+                                                    <div class="col-md-4 offset-2 mx-auto">
+                                                        <img class="rounded" src="{{$Brand->photo}}" style="width: 200px ;height: 200px">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <label> صورة القسم </label>
                                                     <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="file" name="photo">
+                                                        <input type="file" id="file" name="photo" >
                                                         <span class="file-custom"></span>
                                                         @error('photo')
                                                         <span class="text-danger">{{$message}}</span>

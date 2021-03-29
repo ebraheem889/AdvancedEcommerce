@@ -16,10 +16,11 @@ class CreateProductTable extends Migration
         Schema::create('products', function (Blueprint $table) {
 
             $table->increments('id');
+            $table->integer('brand_id')->unsigned()->nullable();
             $table->string('slug')->unique();
             $table->decimal('price',18,4)->unsigned()->nullable();
             $table->decimal('special_price',18,4)->unsigned()->nullable();
-            $table->string('special_price_type')->nullable()->after('special_price');
+            $table->string('special_price_type')->nullable();
             $table->date('special_price_start')->nullable();
             $table->date('special_price_end')->nullable();
             $table->decimal('selling_price',18,4)->unsigned()->nullable();
@@ -29,7 +30,6 @@ class CreateProductTable extends Migration
             $table->boolean('in_stock')->nullable();
             $table->integer('viewed')->unsigned()->default(0);
             $table->boolean('is_active');
-            $table->integer('brand_id')->unsigned()->nullable()->after('id');
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
@@ -47,8 +47,6 @@ class CreateProductTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('products');
     }
 }
